@@ -13,7 +13,6 @@ body {
     font-size: 1.5rem;
 }
 
-/* 991 to 992 breakpoint */
 @media (min-width: 768px) {
     .card {
         margin: auto;
