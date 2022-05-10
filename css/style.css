@@ -1,0 +1,12 @@
+@font-face {
+    font-family: starWars;
+    src: url(../fonts/Starjedi.ttf);
+}
+
+h1 {
+    font-family: starWars;
+}
+
+body {
+    background-image: url(../images/stars.jpg);
+}

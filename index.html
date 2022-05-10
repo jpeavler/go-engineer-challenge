@@ -8,6 +8,7 @@
     <title>Go Engineer Star Wars</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
     </script>
@@ -18,20 +19,24 @@
     <script defer src="js/fetch-data.js"></script>
 </head>
 
-<body>
+<body class="bg-dark">
     <div class="container">
-        <div>
-            <h5 id="ship-name"></h5>
-            <div id="ship-cost"></div>
-            <div id="length"></div>
-            <div id="max-atmosphering-speed"></div>
-            <div id="ship-crew"></div>
-            <div id="ship-passengers"></div>
-            <div id="ship-cargo-capacity"></div>
-            <div id="consumables"></div>
-            <div id="hyperdrive-rating"></div>
-            <div id="ship-mglt"></div>
-            <div id="starship-class"></div>
+        <div class="card border-warning rounded-3 mt-5">
+            <div class="card-header text-warning bg-dark">
+                <h1 id="ship-name" class="card-title"></h1>
+            </div>
+            <div class="card-body">
+                <div id="ship-cost"></div>
+                <div id="length"></div>
+                <div id="max-atmosphering-speed"></div>
+                <div id="ship-crew"></div>
+                <div id="ship-passengers"></div>
+                <div id="ship-cargo-capacity"></div>
+                <div id="consumables"></div>
+                <div id="hyperdrive-rating"></div>
+                <div id="ship-mglt"></div>
+                <div id="starship-class"></div>
+            </div>
         </div>
     </div>
 </body>
