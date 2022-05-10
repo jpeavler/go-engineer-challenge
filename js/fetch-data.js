@@ -12,6 +12,17 @@ function formatNumber(num) {
 }
 
 /**
+ * function capitalizeString
+ * @param {string} string: a string of words
+ * @returns the same string with the first letter of each word capitalized.
+ */
+function capitalizeString(string) {
+    const splitWordsUp = string.split(" ");
+    const capitalizedWords = splitWordsUp.map(word => word[0].toUpperCase() + word.substring(1));
+    return capitalizedWords.join(" ");
+}
+
+/**
  * function setShipDataInDom
  * @param {object} ship: an object describing the ship.
  * This function inserts ship data into the DOM. 
@@ -29,7 +40,7 @@ function setShipDataInDOM(ship) {
     $('#consumables').text(`Consumables: ${ship?.consumables}`);
     $('#hyperdrive-rating').text(`Hyperdrive Rating: ${ship?.hyperdrive_rating}`);
     $('#ship-mglt').text(`MGLT: ${formatNumber(ship?.MGLT)}`);
-    $('#starship-class').text(`Starship Class: ${ship?.starship_class}`);
+    $('#starship-class').text(`Starship Class: ${capitalizeString(ship?.starship_class)}`);
 }
 
 /**
