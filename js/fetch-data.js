@@ -41,6 +41,19 @@ function setShipDataInDOM(ship) {
     $('#hyperdrive-rating').text(`Hyperdrive Rating: ${ship?.hyperdrive_rating}`);
     $('#ship-mglt').text(`MGLT: ${formatNumber(ship?.MGLT)}`);
     $('#starship-class').text(`Starship Class: ${capitalizeString(ship?.starship_class)}`);
+    $("#pilot-names").text(`Pilots: ${ship?.pilotNames}`)
+}
+
+async function getShipPilots(pilotEndpointArray) {
+    if(pilotEndpointArray.length === 0) {
+        return "None";
+    }
+    const pilotNamesArray = [];
+    for(let pilotEndpoint of pilotEndpointArray) {
+        let pilot = await $.get(pilotEndpoint);
+        pilotNamesArray.push(pilot?.name);
+    }
+    return pilotNamesArray.join(", ").replace(/,(?=[^,]+$)/, " and");
 }
 
 /**
@@ -57,7 +70,12 @@ async function getShips() {
         ships.push(response?.results);
         starshipsEndpoint = response?.next;
     }
-    return ships.flat();
+
+    const shipArr = ships.flat();
+    for(let ship of shipArr) {
+        ship.pilotNames = await getShipPilots(ship.pilots);
+    }
+    return shipArr;
 }
 
 /**
