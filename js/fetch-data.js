@@ -1,4 +1,5 @@
 let allShips = [];
+let secondShipsArray = [];
 
 /**
  * function setShipDataInDom
@@ -33,9 +34,16 @@ async function getShips() {
     return ships.flat();
 }
 
-function getRandomShip(shipArray) {
-    const randomIndex = Math.floor(Math.random() * shipArray.length);
-    const randomShip = shipArray[randomIndex];
+function getRandomShip() {
+    if(allShips.length === 0) {
+        allShips.push(... secondShipsArray);
+        secondShipsArray = [];
+    }
+
+    const randomIndex = Math.floor(Math.random() * allShips.length);
+    const randomShip = allShips[randomIndex];
+    allShips.splice(randomIndex, 1);
+    secondShipsArray.push(randomShip);
 
     return randomShip;
 }
@@ -44,7 +52,7 @@ $(document).ready(function() {
     getShips()
         .then(ships => {
             allShips = ships;
-            const randomShip = getRandomShip(allShips);
+            const randomShip = getRandomShip();
             setShipDataInDOM(randomShip);
         });
 });
