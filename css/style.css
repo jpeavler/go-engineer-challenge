@@ -9,4 +9,14 @@ h1 {
 
 body {
     background-image: url(../images/stars.jpg);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.5rem;
+}
+
+/* 991 to 992 breakpoint */
+@media (min-width: 768px) {
+    .card {
+        margin: auto;
+        width: 65%;
+    }
 }
