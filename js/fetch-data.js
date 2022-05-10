@@ -44,18 +44,6 @@ function setShipDataInDOM(ship) {
     $("#pilot-names").text(`Pilots: ${ship?.pilotNames}`)
 }
 
-async function getShipPilots(pilotEndpointArray) {
-    if(pilotEndpointArray.length === 0) {
-        return "None";
-    }
-    const pilotNamesArray = [];
-    for(let pilotEndpoint of pilotEndpointArray) {
-        let pilot = await $.get(pilotEndpoint);
-        pilotNamesArray.push(pilot?.name);
-    }
-    return pilotNamesArray.join(", ").replace(/,(?=[^,]+$)/, " and");
-}
-
 /**
  * function getShips
  * @returns an array of all Star Wars starships from the swapi api
@@ -71,11 +59,7 @@ async function getShips() {
         starshipsEndpoint = response?.next;
     }
 
-    const shipArr = ships.flat();
-    for(let ship of shipArr) {
-        ship.pilotNames = await getShipPilots(ship.pilots);
-    }
-    return shipArr;
+    return ships.flat();
 }
 
 /**
