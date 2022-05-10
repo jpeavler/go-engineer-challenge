@@ -26,9 +26,7 @@ async function getShips() {
     let starshipsEndpoint = "https://swapi.dev/api/starships";
 
     while(starshipsEndpoint) {
-        console.log("while loop entered")
         let response = await $.get(starshipsEndpoint);
-        console.log("My response", response.results);
         ships.push(response?.results);
         starshipsEndpoint = response?.next;
     }
@@ -46,14 +44,12 @@ $(document).ready(function() {
     getShips()
         .then(ships => {
             allShips = ships;
-            console.log("My ships", allShips);
             const randomShip = getRandomShip(allShips);
             setShipDataInDOM(randomShip);
         });
 });
 
 setInterval(function() {
-    console.log("Interval hit");
     const randomShip = getRandomShip(allShips);
     setShipDataInDOM(randomShip);
 }, 10000);
